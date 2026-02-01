@@ -5,54 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for You! 💖</title>
     <style>
-        body { background: #000; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
+        body { background: #120104; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
         .screen { display: none; padding: 20px; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
-        .active { display: flex; animation: zoomIn 0.5s ease; }
-        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .active { display: flex; animation: fadeIn 0.8s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         
-        /* Bade Memes & GIFs */
-        .meme-gif { width: 280px; height: auto; border-radius: 15px; margin-bottom: 20px; border: 2px solid #ff4d6d; box-shadow: 0 0 20px #ff4d6d; }
+        /* Main GIFs (Memes) */
+        .meme-gif { width: 280px; max-width: 80%; border-radius: 20px; margin-bottom: 25px; border: 3px solid #ff4d6d; box-shadow: 0 0 25px rgba(255, 77, 109, 0.6); }
         
-        /* PNG Baarish */
-        .falling-png { position: fixed; top: -50px; width: 40px; pointer-events: none; animation: fall linear forwards; z-index: 100; }
+        /* Falling PNGs (Baarish) */
+        .falling-png { position: fixed; top: -60px; width: 45px; pointer-events: none; animation: fall linear forwards; z-index: 1000; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-        .btn { background: #ff4d6d; color: white; border: none; padding: 18px; border-radius: 50px; font-size: 18px; margin: 10px; cursor: pointer; width: 85%; max-width: 300px; font-weight: bold; }
-        .letter { background: white; color: black; padding: 20px; border-radius: 15px; width: 90%; max-width: 350px; text-align: left; border-left: 10px solid #ff4d6d; }
+        .btn { background: linear-gradient(45deg, #ff4d6d, #ff758c); color: white; border: none; padding: 18px; border-radius: 50px; font-size: 18px; margin: 10px; cursor: pointer; width: 85%; max-width: 320px; font-weight: bold; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+        .letter { background: rgba(255, 255, 255, 0.95); color: #222; padding: 25px; border-radius: 20px; width: 90%; max-width: 380px; text-align: left; border-left: 10px solid #ff4d6d; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
 
     <div class="screen active" id="s1">
-        <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" class="meme-gif">
-        <h1>I know u love me a lot! 🥳</h1>
+        <img src="https://media.tenor.com/7vYp32uS_88AAAAi/cute-bear-love.gif" class="meme-gif" alt="Cute Bear">
+        <h1 style="color: #ff4d6d;">I know u love me a lot! 🥳</h1>
         <button class="btn" onclick="show(2)">Dekhna hai? 😍</button>
     </div>
 
     <div class="screen" id="s2">
-        <img src="https://media.tenor.com/7vYp32uS_88AAAAi/cute-bear-love.gif" class="meme-gif">
-        <h2>Pehle ek baat batao...</h2>
-        <p>Duniya mein sabse lucky kaun hai? 📝</p>
-        <button class="btn" onclick="show(3)">Main Hoon! 😎</button>
-        <button class="btn" onclick="show(3)">Aap Ho! 🥰</button>
+        <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" class="meme-gif" alt="Bubu Dudu">
+        <h2>Ek Chota Quiz! 📝</h2>
+        <p>Sabse zyada lucky kaun hai?</p>
+        <button class="btn" onclick="show(3)">Of course, YOU! 😎</button>
+        <button class="btn" onclick="show(3)">Both of Us! 🥰</button>
     </div>
 
     <div class="screen" id="s3">
-        <img src="https://media.tenor.com/C67U0G76M58AAAAi/rose-cute.gif" class="meme-gif">
+        <img src="https://media.tenor.com/C67U0G76M58AAAAi/rose-cute.gif" class="meme-gif" alt="Rose Gift">
         <h2>Will you be mine forever? 💍</h2>
         <button class="btn" onclick="show(4)">Hamesha! ❤️</button>
-        <button id="noBtn" class="btn" style="background: #333;" onmouseover="moveBtn()">Nahi 🏃‍♂️</button>
+        <button id="noBtn" class="btn" style="background: #444;" onmouseover="moveBtn()">Nahi 🏃‍♂️</button>
     </div>
 
     <div class="screen" id="s4">
         <div class="letter">
-            <h2 style="color:#ff4d6d">My Dearest,</h2>
-            <p>You are my forever. I promise to always hold your hand. Never gonna leave you. 💍</p>
-            <h3 style="text-align: center;">Best Decision Ever!</h3>
+            <h2 style="color:#ff4d6d; margin-top:0;">My Dearest,</h2>
+            <p style="font-size: 18px; line-height: 1.6;">You are my forever. I promise to always hold your hand. Never gonna leave you. 💍</p>
+            <h3 style="text-align: center; color: #ff4d6d;">Best Decision Ever!</h3>
         </div>
-        <img src="https://pngimg.com/uploads/diamond_ring/diamond_ring_PNG28.png" style="width: 80px; margin: 20px;">
-        <h2 style="color:#ff4d6d">I Love You So Much! ❤️</h2>
-        <button class="btn" onclick="location.reload()">Replay ✨</button>
+        
+        <img src="https://pngimg.com/uploads/diamond_ring/diamond_ring_PNG28.png" style="width: 100px; margin: 20px;" alt="Ring">
+        
+        <img src="https://i.ibb.co/L6VshLqR/17088.jpg" class="meme-gif" style="margin-top: 20px;" alt="Our Memory">
+
+        <button class="btn" onclick="location.reload()">Replay Love ✨</button>
     </div>
 
     <script>
@@ -60,20 +63,23 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('s' + id).classList.add('active');
             if(id === 4) startPNGRain();
+            window.scrollTo(0,0);
         }
 
         function moveBtn() {
             const b = document.getElementById('noBtn');
             b.style.position = 'fixed';
-            b.style.left = Math.random() * 80 + 'vw';
-            b.style.top = Math.random() * 80 + 'vh';
+            b.style.left = Math.random() * 70 + 'vw';
+            b.style.top = Math.random() * 70 + 'vh';
         }
 
         function startPNGRain() {
+            // In links ko dhyan se dekhiye, ye direct PNG links hain
             const imgs = [
-                'https://pngimg.com/uploads/rose/rose_PNG639.png',
-                'https://pngimg.com/uploads/heart/heart_PNG51335.png'
+                'https://www.freeiconspng.com/uploads/rose-png-26.png',
+                'https://www.freeiconspng.com/uploads/heart-icon-png-love-21.png'
             ];
+            
             for(let i=0; i<50; i++) {
                 setTimeout(() => {
                     const e = document.createElement('img');
