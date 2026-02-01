@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Rose Day My Love 🌹</title>
+    <title>Happy Rose Day! 🌹</title>
     <style>
-        body { background-color: #fff0f3; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; width: 85%; max-width: 350px; }
+        body { background-color: #fff0f3; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; text-align: center; }
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 350px; }
         .step { display: none; }
         .active { display: block; animation: zoomIn 0.5s; }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        img { width: 160px; margin-bottom: 15px; border-radius: 10px; }
-        h2 { color: #ff4d6d; }
-        .btn { background: #ff4d6d; color: white; border: none; padding: 12px 20px; border-radius: 25px; cursor: pointer; font-size: 16px; margin-top: 15px; }
-        .floating-emoji { position: fixed; top: -50px; font-size: 24px; animation: fall linear forwards; }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); } }
+        img { width: 180px; margin-bottom: 15px; border-radius: 10px; }
+        h2 { color: #ff4d6d; font-size: 22px; }
+        .btn { background: #ff4d6d; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-size: 18px; margin-top: 15px; font-weight: bold; }
+        /* Falling Animation */
+        .falling { position: fixed; top: -50px; width: 30px; animation: fall linear forwards; z-index: 100; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
@@ -22,30 +23,30 @@
     <div class="card">
         <div class="step active" id="step1">
             <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" alt="Teddy">
-            <h2>Hello Ji! 🧸</h2>
-            <p>Aaj ke liye ek chota sa surprise hai...</p>
-            <button class="btn" onclick="nextStep(2)">Kya Surprise Hai? ✨</button>
+            <h2>Hii My Love! 🧸</h2>
+            <p>Aaj Rose Day hai, toh tumhare liye kuch khaas hai...</p>
+            <button class="btn" onclick="nextStep(2)">Kya hai? 😍</button>
         </div>
 
         <div class="step" id="step2">
             <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" alt="Rose Teddy">
-            <h2>Sabse Pehle Ye... 🌹</h2>
-            <p>Ye Rose duniya ke sabse pyaare insaan ke liye!</p>
-            <button class="btn" onclick="nextStep(3)">Aur aage? 😍</button>
+            <h2>Pehle Ye Pakdo! 🌹</h2>
+            <p>Ye Rose tumhare liye, kyunki tum sabse pyaare ho!</p>
+            <button class="btn" onclick="nextStep(3)">Chalo Agla Dekho ✨</button>
         </div>
 
         <div class="step" id="step3">
             <img src="https://media.tenor.com/C67U0G76M58AAAAi/rose-cute.gif" alt="Rose">
             <h2>Happy Rose Day! 🌹</h2>
-            <p>I am so lucky to have you in my life. ❤️</p>
-            <button class="btn" onclick="celebrate()">Accept My Rose? 🌹</button>
+            <p>I love you so much! ❤️</p>
+            <button class="btn" onclick="celebrate()">Accept My Love? 🌹</button>
         </div>
 
         <div class="step" id="step4">
-            <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" alt="Happy">
-            <h2>Yayyy! I Love You! ❤️🧸</h2>
-            <p>Ab humesha khush rehna! 🎉</p>
-            <button class="btn" onclick="location.reload()">Wapis Dekhna Hai? ✨</button>
+            <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" alt="Happy Dance">
+            <h2>Yayyy! Partyyy! 🎉</h2>
+            <p>Tumne mera Rose accept kar liya! ❤️🧸</p>
+            <button class="btn" onclick="location.reload()">Phir se dekhein? ✨</button>
         </div>
     </div>
 
@@ -57,18 +58,21 @@
 
         function celebrate() {
             nextStep(4);
-            // Floating Emojis Logic
-            const emojis = ['🌹', '❤️', '🧸', '💖', '✨'];
-            for(let i=0; i<50; i++) {
+            // Falling Images (Roses and Hearts)
+            const imgs = [
+                'https://pngimg.com/uploads/rose/rose_PNG639.png',
+                'https://pngimg.com/uploads/heart/heart_PNG51335.png'
+            ];
+            for(let i=0; i<40; i++) {
                 setTimeout(() => {
-                    const e = document.createElement('div');
-                    e.className = 'floating-emoji';
-                    e.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    const e = document.createElement('img');
+                    e.className = 'falling';
+                    e.src = imgs[Math.floor(Math.random() * imgs.length)];
                     e.style.left = Math.random() * 100 + 'vw';
                     e.style.animationDuration = (Math.random() * 2 + 2) + 's';
                     document.body.appendChild(e);
                     setTimeout(() => e.remove(), 4000);
-                }, i * 100);
+                }, i * 150);
             }
         }
     </script>
