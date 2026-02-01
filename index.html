@@ -3,77 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propose & Rose Day Special 💖</title>
+    <title>My Forever Love 💖</title>
     <style>
         body { background: #1a0105; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
         .screen { display: none; padding: 20px; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
-        .active { display: flex; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .active { display: flex; animation: fadeIn 0.8s; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #ff4d6d; object-fit: cover; margin-bottom: 20px; }
-        .my-photo { width: 90%; max-width: 300px; border-radius: 15px; border: 3px solid #ff4d6d; margin-top: 15px; box-shadow: 0 0 20px #ff4d6d; }
+        /* GIFs and Photos */
+        .main-gif { width: 250px; border-radius: 20px; margin-bottom: 20px; filter: drop-shadow(0 0 15px #ff4d6d); }
+        .my-photo { width: 90%; max-width: 350px; border-radius: 15px; border: 3px solid #ff4d6d; margin: 15px 0; }
+
+        /* Buttons */
+        .btn { background: linear-gradient(45deg, #ff4d6d, #ff758c); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 18px; margin: 10px; cursor: pointer; width: 80%; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
         
-        .btn { background: #ff4d6d; color: white; border: none; padding: 15px; border-radius: 30px; font-size: 18px; margin: 10px; cursor: pointer; width: 85%; max-width: 300px; font-weight: bold; }
-        .quiz-btn { background: rgba(255,255,255,0.1); border: 1px solid #ff4d6d; }
-        
-        .letter-box { background: #fff0f3; color: #333; padding: 20px; border-radius: 15px; border-left: 10px solid #ff4d6d; text-align: left; width: 90%; }
-        .heart-bg { position: fixed; color: #ff4d6d; animation: floatUp 4s infinite linear; z-index: -1; pointer-events: none; }
-        @keyframes floatUp { from { transform: translateY(100vh); opacity: 1; } to { transform: translateY(-10vh); opacity: 0; } }
+        /* Glass Box */
+        .content-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 20px; width: 90%; max-width: 400px; text-align: left; }
+
+        /* Falling Hearts */
+        .heart-bg { position: fixed; top: -10%; animation: fall linear forwards; z-index: -1; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
 
+    <audio id="loveSong" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="screen active" id="s1">
-        <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" class="profile-img">
-        <h1>Hey Beautiful! ✨</h1>
-        <p>I have a very special question for you...</p>
-        <button class="btn" onclick="show(2)">Start the Journey ➔</button>
+        <img src="https://media.tenor.com/7vYp32uS_88AAAAi/cute-bear-love.gif" class="main-gif">
+        <h1>I know u love me a lot! 🥳</h1>
+        <p>Open it with music? 😍</p>
+        <button class="btn" onclick="startApp()">Yes, Play Music! ➔</button>
     </div>
 
     <div class="screen" id="s2">
-        <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" class="profile-img">
-        <h2 style="color:#ff4d6d">Step 1: The Love Quiz 📝</h2>
-        <p>Who is the lucky one in this relationship?</p>
-        <button class="btn quiz-btn" onclick="show(3)">You</button>
-        <button class="btn quiz-btn" onclick="show(3)">Me</button>
-        <button class="btn quiz-btn" onclick="show(3)">Both of us! 🥰</button>
+        <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" class="main-gif">
+        <h2>Sabse Pyara Kaun Hai? 📝</h2>
+        <button class="btn" onclick="show(3)">Of course, YOU! 🥰</button>
+        <button class="btn" onclick="show(3)">My Partner ❤️</button>
     </div>
 
     <div class="screen" id="s3">
-        <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" class="profile-img">
-        
-        <div class="letter-box">
-            <h2 style="color: #ff4d6d; margin-top:0;">My Dearest,</h2>
-            <p>You are my forever. I promise to always hold your hand. You are my everything my love. Be the safe as you are, never gonna leave you.</p>
-            <h3 style="color: #ff4d6d; text-align:center;">Happy Propose Day! 💍</h3>
-        </div>
+        <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" class="main-gif">
+        <h2 style="color: #ff4d6d;">Will you be my forever? 💍</h2>
+        <button class="btn" onclick="show(4)">Yes, Always! ❤️</button>
+        <button id="noBtn" class="btn" style="background:gray;" onmouseover="moveButton()">No 😢</button>
+    </div>
 
-        <p style="margin-top:20px;">Best Decision Ever! ❤️</p>
-        <img src="https://via.placeholder.com/300" id="userPhoto" class="my-photo" alt="Our Special Moment">
+    <div class="screen" id="s4">
+        <div class="content-box">
+            <h2 style="color: #ff4d6d;">My Dearest,</h2>
+            <p>You are my everything. I promise to always hold your hand. Never gonna leave you. 💍</p>
+            <h3 style="text-align: center;">Best Decision Ever!</h3>
+        </div>
         
-        <button class="btn" onclick="location.reload()" style="margin-top:20px;">Replay ❤️</button>
+        <img src="https://i.ibb.co/3Y7Lz9m/your-image.jpg" class="my-photo">
+        
+        <button class="btn" onclick="location.reload()">Replay Love ✨</button>
     </div>
 
     <script>
+        function startApp() {
+            document.getElementById('loveSong').play();
+            show(2);
+        }
+
         function show(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('s' + id).classList.add('active');
+            window.scrollTo(0,0);
         }
 
-        // Heart Rain
-        setInterval(() => {
-            const h = document.createElement('div');
-            h.innerHTML = '❤️';
-            h.className = 'heart-bg';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 4000);
-        }, 300);
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
 
-        // PHOTO CHANGE KARNE KA TARIQA:
-        // Niche di gayi line mein 'APNA_PHOTO_LINK' ki jagah apni image ka link daal dein
-        document.getElementById('userPhoto').src = 'https://i.ibb.co/3Y7Lz9m/your-image.jpg'; 
+        // Falling Hearts and Roses
+        function createHeart() {
+            const h = document.createElement('div');
+            h.classList.add('heart-bg');
+            h.innerHTML = ['❤️','🌹','💖','✨'][Math.floor(Math.random() * 4)];
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.fontSize = Math.random() * 20 + 20 + "px";
+            h.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
