@@ -3,100 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Forever Love 💖</title>
+    <title>Surprise for You! 💖</title>
     <style>
-        body { background: #1a0105; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
+        body { background: #000; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
         .screen { display: none; padding: 20px; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
-        .active { display: flex; animation: fadeIn 0.8s; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .active { display: flex; animation: zoomIn 0.5s ease; }
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         
-        /* GIFs and Photos */
-        .main-gif { width: 250px; border-radius: 20px; margin-bottom: 20px; filter: drop-shadow(0 0 15px #ff4d6d); }
-        .my-photo { width: 90%; max-width: 350px; border-radius: 15px; border: 3px solid #ff4d6d; margin: 15px 0; }
-
-        /* Buttons */
-        .btn { background: linear-gradient(45deg, #ff4d6d, #ff758c); color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 18px; margin: 10px; cursor: pointer; width: 80%; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
+        /* Bade Memes & GIFs */
+        .meme-gif { width: 280px; height: auto; border-radius: 15px; margin-bottom: 20px; border: 2px solid #ff4d6d; box-shadow: 0 0 20px #ff4d6d; }
         
-        /* Glass Box */
-        .content-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 20px; width: 90%; max-width: 400px; text-align: left; }
-
-        /* Falling Hearts */
-        .heart-bg { position: fixed; top: -10%; animation: fall linear forwards; z-index: -1; pointer-events: none; }
+        /* PNG Baarish */
+        .falling-png { position: fixed; top: -50px; width: 40px; pointer-events: none; animation: fall linear forwards; z-index: 100; }
         @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        .btn { background: #ff4d6d; color: white; border: none; padding: 18px; border-radius: 50px; font-size: 18px; margin: 10px; cursor: pointer; width: 85%; max-width: 300px; font-weight: bold; }
+        .letter { background: white; color: black; padding: 20px; border-radius: 15px; width: 90%; max-width: 350px; text-align: left; border-left: 10px solid #ff4d6d; }
     </style>
 </head>
 <body>
 
-    <audio id="loveSong" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="screen active" id="s1">
-        <img src="https://media.tenor.com/7vYp32uS_88AAAAi/cute-bear-love.gif" class="main-gif">
+        <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" class="meme-gif">
         <h1>I know u love me a lot! 🥳</h1>
-        <p>Open it with music? 😍</p>
-        <button class="btn" onclick="startApp()">Yes, Play Music! ➔</button>
+        <button class="btn" onclick="show(2)">Dekhna hai? 😍</button>
     </div>
 
     <div class="screen" id="s2">
-        <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" class="main-gif">
-        <h2>Sabse Pyara Kaun Hai? 📝</h2>
-        <button class="btn" onclick="show(3)">Of course, YOU! 🥰</button>
-        <button class="btn" onclick="show(3)">My Partner ❤️</button>
+        <img src="https://media.tenor.com/7vYp32uS_88AAAAi/cute-bear-love.gif" class="meme-gif">
+        <h2>Pehle ek baat batao...</h2>
+        <p>Duniya mein sabse lucky kaun hai? 📝</p>
+        <button class="btn" onclick="show(3)">Main Hoon! 😎</button>
+        <button class="btn" onclick="show(3)">Aap Ho! 🥰</button>
     </div>
 
     <div class="screen" id="s3">
-        <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" class="main-gif">
-        <h2 style="color: #ff4d6d;">Will you be my forever? 💍</h2>
-        <button class="btn" onclick="show(4)">Yes, Always! ❤️</button>
-        <button id="noBtn" class="btn" style="background:gray;" onmouseover="moveButton()">No 😢</button>
+        <img src="https://media.tenor.com/C67U0G76M58AAAAi/rose-cute.gif" class="meme-gif">
+        <h2>Will you be mine forever? 💍</h2>
+        <button class="btn" onclick="show(4)">Hamesha! ❤️</button>
+        <button id="noBtn" class="btn" style="background: #333;" onmouseover="moveBtn()">Nahi 🏃‍♂️</button>
     </div>
 
     <div class="screen" id="s4">
-        <div class="content-box">
-            <h2 style="color: #ff4d6d;">My Dearest,</h2>
-            <p>You are my everything. I promise to always hold your hand. Never gonna leave you. 💍</p>
+        <div class="letter">
+            <h2 style="color:#ff4d6d">My Dearest,</h2>
+            <p>You are my forever. I promise to always hold your hand. Never gonna leave you. 💍</p>
             <h3 style="text-align: center;">Best Decision Ever!</h3>
         </div>
-        
-        <img src="https://i.ibb.co/3Y7Lz9m/your-image.jpg" class="my-photo">
-        
-        <button class="btn" onclick="location.reload()">Replay Love ✨</button>
+        <img src="https://pngimg.com/uploads/diamond_ring/diamond_ring_PNG28.png" style="width: 80px; margin: 20px;">
+        <h2 style="color:#ff4d6d">I Love You So Much! ❤️</h2>
+        <button class="btn" onclick="location.reload()">Replay ✨</button>
     </div>
 
     <script>
-        function startApp() {
-            document.getElementById('loveSong').play();
-            show(2);
-        }
-
         function show(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('s' + id).classList.add('active');
-            window.scrollTo(0,0);
+            if(id === 4) startPNGRain();
         }
 
-        function moveButton() {
-            const btn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
-            btn.style.position = 'absolute';
-            btn.style.left = x + 'px';
-            btn.style.top = y + 'px';
+        function moveBtn() {
+            const b = document.getElementById('noBtn');
+            b.style.position = 'fixed';
+            b.style.left = Math.random() * 80 + 'vw';
+            b.style.top = Math.random() * 80 + 'vh';
         }
 
-        // Falling Hearts and Roses
-        function createHeart() {
-            const h = document.createElement('div');
-            h.classList.add('heart-bg');
-            h.innerHTML = ['❤️','🌹','💖','✨'][Math.floor(Math.random() * 4)];
-            h.style.left = Math.random() * 100 + "vw";
-            h.style.fontSize = Math.random() * 20 + 20 + "px";
-            h.style.animationDuration = Math.random() * 2 + 3 + "s";
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
+        function startPNGRain() {
+            const imgs = [
+                'https://pngimg.com/uploads/rose/rose_PNG639.png',
+                'https://pngimg.com/uploads/heart/heart_PNG51335.png'
+            ];
+            for(let i=0; i<50; i++) {
+                setTimeout(() => {
+                    const e = document.createElement('img');
+                    e.className = 'falling-png';
+                    e.src = imgs[Math.floor(Math.random() * imgs.length)];
+                    e.style.left = Math.random() * 100 + 'vw';
+                    e.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(e);
+                }, i * 200);
+            }
         }
-        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
