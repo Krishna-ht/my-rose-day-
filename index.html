@@ -3,78 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Rose Day! 🌹</title>
+    <title>Propose & Rose Day Special 💖</title>
     <style>
-        body { background-color: #fff0f3; font-family: 'Arial', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; text-align: center; }
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 85%; max-width: 350px; }
-        .step { display: none; }
-        .active { display: block; animation: zoomIn 0.5s; }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); } }
-        img { width: 180px; margin-bottom: 15px; border-radius: 10px; }
-        h2 { color: #ff4d6d; font-size: 22px; }
-        .btn { background: #ff4d6d; color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-size: 18px; margin-top: 15px; font-weight: bold; }
-        /* Falling Animation */
-        .falling { position: fixed; top: -50px; width: 30px; animation: fall linear forwards; z-index: 100; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+        body { background: #1a0105; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow-x: hidden; }
+        .screen { display: none; padding: 20px; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
+        .active { display: flex; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #ff4d6d; object-fit: cover; margin-bottom: 20px; }
+        .my-photo { width: 90%; max-width: 300px; border-radius: 15px; border: 3px solid #ff4d6d; margin-top: 15px; box-shadow: 0 0 20px #ff4d6d; }
+        
+        .btn { background: #ff4d6d; color: white; border: none; padding: 15px; border-radius: 30px; font-size: 18px; margin: 10px; cursor: pointer; width: 85%; max-width: 300px; font-weight: bold; }
+        .quiz-btn { background: rgba(255,255,255,0.1); border: 1px solid #ff4d6d; }
+        
+        .letter-box { background: #fff0f3; color: #333; padding: 20px; border-radius: 15px; border-left: 10px solid #ff4d6d; text-align: left; width: 90%; }
+        .heart-bg { position: fixed; color: #ff4d6d; animation: floatUp 4s infinite linear; z-index: -1; pointer-events: none; }
+        @keyframes floatUp { from { transform: translateY(100vh); opacity: 1; } to { transform: translateY(-10vh); opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="step active" id="step1">
-            <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" alt="Teddy">
-            <h2>Hii My Love! 🧸</h2>
-            <p>Aaj Rose Day hai, toh tumhare liye kuch khaas hai...</p>
-            <button class="btn" onclick="nextStep(2)">Kya hai? 😍</button>
+    <div class="screen active" id="s1">
+        <img src="https://media.tenor.com/T0_S_vFm0_EAAAAi/cute-bear.gif" class="profile-img">
+        <h1>Hey Beautiful! ✨</h1>
+        <p>I have a very special question for you...</p>
+        <button class="btn" onclick="show(2)">Start the Journey ➔</button>
+    </div>
+
+    <div class="screen" id="s2">
+        <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" class="profile-img">
+        <h2 style="color:#ff4d6d">Step 1: The Love Quiz 📝</h2>
+        <p>Who is the lucky one in this relationship?</p>
+        <button class="btn quiz-btn" onclick="show(3)">You</button>
+        <button class="btn quiz-btn" onclick="show(3)">Me</button>
+        <button class="btn quiz-btn" onclick="show(3)">Both of us! 🥰</button>
+    </div>
+
+    <div class="screen" id="s3">
+        <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" class="profile-img">
+        
+        <div class="letter-box">
+            <h2 style="color: #ff4d6d; margin-top:0;">My Dearest,</h2>
+            <p>You are my forever. I promise to always hold your hand. You are my everything my love. Be the safe as you are, never gonna leave you.</p>
+            <h3 style="color: #ff4d6d; text-align:center;">Happy Propose Day! 💍</h3>
         </div>
 
-        <div class="step" id="step2">
-            <img src="https://media.tenor.com/u_4qJvI7480AAAAi/bubu-dudu-bubu.gif" alt="Rose Teddy">
-            <h2>Pehle Ye Pakdo! 🌹</h2>
-            <p>Ye Rose tumhare liye, kyunki tum sabse pyaare ho!</p>
-            <button class="btn" onclick="nextStep(3)">Chalo Agla Dekho ✨</button>
-        </div>
-
-        <div class="step" id="step3">
-            <img src="https://media.tenor.com/C67U0G76M58AAAAi/rose-cute.gif" alt="Rose">
-            <h2>Happy Rose Day! 🌹</h2>
-            <p>I love you so much! ❤️</p>
-            <button class="btn" onclick="celebrate()">Accept My Love? 🌹</button>
-        </div>
-
-        <div class="step" id="step4">
-            <img src="https://media.tenor.com/zMInGvD_c3UAAAAi/bubu-dudu-panda-bear.gif" alt="Happy Dance">
-            <h2>Yayyy! Partyyy! 🎉</h2>
-            <p>Tumne mera Rose accept kar liya! ❤️🧸</p>
-            <button class="btn" onclick="location.reload()">Phir se dekhein? ✨</button>
-        </div>
+        <p style="margin-top:20px;">Best Decision Ever! ❤️</p>
+        <img src="https://via.placeholder.com/300" id="userPhoto" class="my-photo" alt="Our Special Moment">
+        
+        <button class="btn" onclick="location.reload()" style="margin-top:20px;">Replay ❤️</button>
     </div>
 
     <script>
-        function nextStep(n) {
-            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step' + n).classList.add('active');
+        function show(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + id).classList.add('active');
         }
 
-        function celebrate() {
-            nextStep(4);
-            // Falling Images (Roses and Hearts)
-            const imgs = [
-                'https://pngimg.com/uploads/rose/rose_PNG639.png',
-                'https://pngimg.com/uploads/heart/heart_PNG51335.png'
-            ];
-            for(let i=0; i<40; i++) {
-                setTimeout(() => {
-                    const e = document.createElement('img');
-                    e.className = 'falling';
-                    e.src = imgs[Math.floor(Math.random() * imgs.length)];
-                    e.style.left = Math.random() * 100 + 'vw';
-                    e.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                    document.body.appendChild(e);
-                    setTimeout(() => e.remove(), 4000);
-                }, i * 150);
-            }
-        }
+        // Heart Rain
+        setInterval(() => {
+            const h = document.createElement('div');
+            h.innerHTML = '❤️';
+            h.className = 'heart-bg';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 4000);
+        }, 300);
+
+        // PHOTO CHANGE KARNE KA TARIQA:
+        // Niche di gayi line mein 'APNA_PHOTO_LINK' ki jagah apni image ka link daal dein
+        document.getElementById('userPhoto').src = 'https://i.ibb.co/3Y7Lz9m/your-image.jpg'; 
     </script>
 </body>
 </html>
